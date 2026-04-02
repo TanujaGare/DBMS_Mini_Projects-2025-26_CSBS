@@ -3,3 +3,5 @@ pymongo
 flask-bcrypt
 flask-cors
 python-dotenv
+gunicorn
+Werkzeug

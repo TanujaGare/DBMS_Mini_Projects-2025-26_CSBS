@@ -13,7 +13,17 @@ env_path = pathlib.Path(__file__).resolve().parent / '.env'
 load_dotenv(dotenv_path=env_path)
 
 app = Flask(__name__)
-CORS(app)
+
+# Configure CORS for production
+ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "*").split(",")
+CORS(app, resources={
+    r"/*": {
+        "origins": ALLOWED_ORIGINS,
+        "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        "allow_headers": ["Content-Type"]
+    }
+})
+
 bcrypt = Bcrypt(app)
 
 MONGO_URI = os.getenv("MONGO_URI")
@@ -195,4 +205,7 @@ def seed_menu():
     }), 201
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    # Use environment variables for production
+    port = int(os.getenv("PORT", 5000))
+    debug = os.getenv("FLASK_ENV") != "production"
+    app.run(debug=debug, host="0.0.0.0", port=port)

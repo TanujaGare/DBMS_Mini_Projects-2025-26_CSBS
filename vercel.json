@@ -1,0 +1,22 @@
+{
+  "buildCommand": "echo 'Frontend static site ready'",
+  "framework": "static",
+  "public": "frontend",
+  "rewrites": [
+    {
+      "source": "/(?!.*\\.)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    }
+  ]
+}

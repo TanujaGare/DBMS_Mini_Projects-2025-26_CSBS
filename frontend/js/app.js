@@ -1,4 +1,9 @@
-const API_BASE = 'http://localhost:5000';
+// Use environment variable for API URL, fallback to localhost for development
+const API_BASE = typeof process !== 'undefined' && process.env.VITE_API_BASE_URL 
+  ? process.env.VITE_API_BASE_URL 
+  : window.location.hostname === 'localhost' 
+  ? 'http://localhost:5000'
+  : `${window.location.protocol}//${window.location.hostname.replace('canteen', 'api')}`;
 
 function showToast(message, type = 'success') {
     const toast = document.createElement('div');
