@@ -1,0 +1,19 @@
+{
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
+    ],
+    "headers": [
+        {
+            "source": "/",
+            "headers": [
+                {
+                    "key": "Content-Security-Policy",
+                    "value": "default-src 'self'; connect-src 'self' https://online-course-registration-backend.vercel.app; script-src 'self' 'wasm-unsafe-eval' https://vercel.live; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com;"
+                }
+            ]
+        }
+    ]
+}
