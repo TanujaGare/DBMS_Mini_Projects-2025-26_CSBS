@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rentals | Vehicle Rental MS</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon">🚗</div>
+    <div><span>VehicleRent<br/><small>Management System</small></span></div>
+  </div>
+  <p class="nav-label">Navigation</p>
+  <a href="index.html"     class="nav-item"><span class="icon">📊</span> Dashboard</a>
+  <a href="vehicles.html"  class="nav-item"><span class="icon">🚙</span> Vehicles</a>
+  <a href="customers.html" class="nav-item"><span class="icon">👤</span> Customers</a>
+  <a href="rentals.html"   class="nav-item active"><span class="icon">📋</span> Rentals</a>
+</aside>
+
+<div class="main">
+  <div class="topbar">
+    <div>
+      <div class="topbar-title">Rentals</div>
+      <div class="topbar-subtitle">Book &amp; manage vehicle rentals</div>
+    </div>
+    <button class="btn btn-primary" onclick="openModal()">+ Book Rental</button>
+  </div>
+
+  <div class="content">
+
+    <!-- Active Rentals -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">🔵 Active Rentals</span>
+        <span id="activeCount" style="font-size:13px;color:var(--text-secondary);"></span>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>#</th><th>Customer</th><th>Vehicle</th><th>Start</th><th>End</th><th>Days</th><th>Amount</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="activeBody">
+            <tr><td colspan="8"><div class="loading"><div class="spinner"></div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Rental History -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">📂 Rental History</span>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>#</th><th>Customer</th><th>Vehicle</th><th>Start</th><th>End</th><th>Amount</th><th>Status</th></tr>
+          </thead>
+          <tbody id="historyBody">
+            <tr><td colspan="7"><div class="loading"><div class="spinner"></div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- BOOK RENTAL MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-title">Book New Rental</div>
+    <form id="rentalForm">
+      <div class="form-grid">
+        <div class="form-group full">
+          <label>Customer *</label>
+          <select id="customer_id" required>
+            <option value="">Select a customer…</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Available Vehicle *</label>
+          <select id="vehicle_id" required onchange="updatePricePreview()">
+            <option value="">Select a vehicle…</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Start Date *</label>
+          <input type="date" id="start_date" required onchange="updatePricePreview()"/>
+        </div>
+        <div class="form-group">
+          <label>End Date *</label>
+          <input type="date" id="end_date" required onchange="updatePricePreview()"/>
+        </div>
+        <div class="form-group full" id="costPreview" style="display:none;">
+          <div style="background:var(--accent-glow);border:1px solid var(--accent);border-radius:8px;padding:14px 18px;">
+            <div style="font-size:13px;color:var(--text-secondary);">Estimated Total Cost</div>
+            <div id="costText" style="font-size:24px;font-weight:700;color:var(--accent-light);"></div>
+            <div id="daysText" style="font-size:12px;color:var(--text-secondary);"></div>
+          </div>
+        </div>
+        <div class="form-group full">
+          <label>Notes</label>
+          <textarea id="notes" placeholder="Any special requests…"></textarea>
+        </div>
+      </div>
+    </form>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="bookRental()">Confirm Booking</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+<script src="js/utils.js"></script>
+<script src="js/rentals.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard | Vehicle Rental MS</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon">🚗</div>
+    <div><span>VehicleRent<br/><small>Management System</small></span></div>
+  </div>
+  <p class="nav-label">Navigation</p>
+  <a href="index.html"     class="nav-item active"><span class="icon">📊</span> Dashboard</a>
+  <a href="vehicles.html"  class="nav-item"><span class="icon">🚙</span> Vehicles</a>
+  <a href="customers.html" class="nav-item"><span class="icon">👤</span> Customers</a>
+  <a href="rentals.html"   class="nav-item"><span class="icon">📋</span> Rentals</a>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar">
+    <div>
+      <div class="topbar-title">Dashboard</div>
+      <div class="topbar-subtitle">Overview of your rental business</div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- STAT CARDS -->
+    <div class="stat-grid" id="statGrid">
+      <div class="loading"><div class="spinner"></div> Loading stats…</div>
+    </div>
+
+    <!-- RECENT RENTALS -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">📋 Recent Rentals</span>
+        <a href="rentals.html" class="btn btn-ghost btn-sm">View All →</a>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th><th>Customer</th><th>Vehicle</th><th>Start</th><th>End</th><th>Amount</th><th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="recentBody">
+            <tr><td colspan="7"><div class="loading"><div class="spinner"></div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+<script src="js/utils.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
