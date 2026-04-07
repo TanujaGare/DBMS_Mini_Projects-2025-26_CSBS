@@ -1,0 +1,32 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row mt-5 mb-5">
+    <div class="col-8 offset-2 col-md-6 offset-md-3">
+        <h2 class="fw-bold mb-4 text-center">Welcome Back</h2>
+        
+        <form action="/login" method="POST" class="needs-validation shadow-sm p-5 rounded-4 border bg-white" novalidate>
+            <div class="mb-4">
+                <label for="username" class="form-label fw-semibold">Username</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-light text-muted border-end-0"><i class="fa-solid fa-user"></i></span>
+                    <input type="text" id="username" name="username" class="form-control border-start-0 ps-0 rounded-end-3 py-2" required placeholder="Enter your username">
+                    <div class="invalid-feedback">Username is required.</div>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <label for="password" class="form-label fw-semibold">Password</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-light text-muted border-end-0"><i class="fa-solid fa-lock"></i></span>
+                    <input type="password" id="password" name="password" class="form-control border-start-0 ps-0 rounded-end-3 py-2" required placeholder="Enter your password">
+                    <div class="invalid-feedback">Password is required.</div>
+                </div>
+            </div>
+
+            <button class="btn btn-dark w-100 py-2 rounded-pill fw-bold fs-5 shadow-sm">Log In</button>
+            <div class="mt-4 text-center text-muted">
+                New to Wanderlust? <a href="/register" class="text-danger fw-semibold text-decoration-none">Create an account</a>
+            </div>
+        </form>
+    </div>
+</div>

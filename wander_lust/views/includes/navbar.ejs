@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="/listings"><i class="fa-solid fa-compass text-danger"></i> Wanderlust</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav me-auto">
+          <a class="nav-link" href="/listings">Explore</a>
+          <a class="nav-link" href="/listings/new">Add Listing</a>
+        </div>
+        <form class="d-flex me-3" role="search" action="/listings" method="GET">
+            <input class="form-control me-2 rounded-pill" type="search" placeholder="Search destinations..." aria-label="Search" name="search" value="<%= typeof search !== 'undefined' ? search : '' %>">
+            <button class="btn btn-outline-danger rounded-pill" type="submit">Search</button>
+        </form>
+        <div class="navbar-nav ms-auto">
+          <% if(!currUser) { %>
+            <a class="nav-link" href="/register"><b>Sign Up</b></a>
+            <a class="nav-link" href="/login"><b>Log In</b></a>
+          <% } else { %>
+            <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle border-0 shadow-none fw-semibold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa-regular fa-user me-1"></i> <%= currUser.username %>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket me-2"></i>Log Out</a></li>
+                </ul>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </nav>

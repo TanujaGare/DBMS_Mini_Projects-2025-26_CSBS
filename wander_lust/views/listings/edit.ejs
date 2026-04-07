@@ -1,0 +1,55 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row mt-4 mb-5">
+    <div class="col-8 offset-2">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="fw-bold mb-0">Edit your Listing</h3>
+            <a href="/listings/<%= listing._id %>" class="btn btn-outline-secondary btn-sm px-3 rounded-pill">Cancel</a>
+        </div>
+        
+        <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" class="needs-validation shadow-sm p-5 rounded-4 border bg-white" novalidate>
+            <div class="mb-3">
+                <label for="title" class="form-label fw-semibold">Title</label>
+                <input type="text" name="listing[title]" value="<%= listing.title %>" class="form-control rounded-3 py-2" required>
+                <div class="valid-feedback">Title looks good!</div>
+                <div class="invalid-feedback">Please enter a valid title.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label fw-semibold">Description</label>
+                <textarea name="listing[description]" class="form-control rounded-3" rows="4" required><%= listing.description %></textarea>
+                <div class="invalid-feedback">Please enter a short description.</div>
+            </div>
+
+            <div class="mb-4">
+                <label for="image" class="form-label fw-semibold">Image Link</label>
+                <input type="text" name="listing[image]" value="<%= listing.image %>" class="form-control rounded-3 py-2">
+            </div>
+
+            <div class="row mb-3">
+                <div class="mb-3 col-md-4">
+                    <label for="price" class="form-label fw-semibold">Price (per night)</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light border-end-0">&#8377;</span>
+                        <input type="number" name="listing[price]" value="<%= listing.price %>" class="form-control border-start-0 ps-0 rounded-end-3 py-2" required min="0">
+                        <div class="invalid-feedback">Please enter a valid price.</div>
+                    </div>
+                </div>
+
+                <div class="mb-3 col-md-8">
+                    <label for="country" class="form-label fw-semibold">Country</label>
+                    <input type="text" name="listing[country]" value="<%= listing.country %>" class="form-control rounded-3 py-2" required>
+                    <div class="invalid-feedback">Country name should be valid.</div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label for="location" class="form-label fw-semibold">Location</label>
+                <input type="text" name="listing[location]" value="<%= listing.location %>" class="form-control rounded-3 py-2" required>
+                <div class="invalid-feedback">Location should be valid.</div>
+            </div>
+
+            <button class="btn btn-dark w-100 py-2 rounded-pill fw-bold mt-2 fs-5 shadow-sm">Update Listing</button>
+        </form>
+    </div>
+</div>
